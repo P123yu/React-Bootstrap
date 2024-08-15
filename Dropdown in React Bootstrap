@@ -1,0 +1,74 @@
+
+
+
+npm install react-bootstrap bootstrap
+
+
+// DropdownComponent.jsx ===============================================================================================================================
+
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState } from 'react';
+import Dropdown from 'react-bootstrap/Dropdown';
+import { MdKeyboardArrowDown } from "react-icons/md";
+
+function DropdownComponent() {
+  const [selectedValue, setSelectedValue] = useState('Select an option');
+
+  const handleSelect = (eventKey) => {
+    setSelectedValue(eventKey);
+  };
+
+  console.log(selectedValue,"selectedValue");
+
+  return (
+    <div className="dropdown transparent-dropdown p-2 rounded" style={{ border: '1px solid rgba(0, 0, 0, 0.125)',}}>
+      <Dropdown onSelect={handleSelect}>
+        <Dropdown.Toggle
+          as="button"
+          variant="success"
+          id="dropdown-basic"
+          style={{ 
+            backgroundColor: 'transparent',
+            display: 'flex',
+            alignItems: 'center',
+            border: '0px solid rgba(0, 0, 0, 0.125)',           
+          }}
+        >
+          <span>{selectedValue}</span>
+          <MdKeyboardArrowDown style={{ right: '10px',zIndex:'50px',position:'absolute',fontSize:'25px' }} />
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)',width:'auto' }}>
+          <Dropdown.Item eventKey="kartik">kartik</Dropdown.Item>
+          <Dropdown.Item eventKey="manpreet">manpreet</Dropdown.Item>
+          <Dropdown.Item eventKey="piyush">piyush</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+    </div>
+  );
+}
+
+export default DropdownComponent;
+
+
+// in index.css ==========================================================================================================================================
+
+
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+button#dropdown-basic.dropdown-toggle::after {
+  font-size:0px !important;
+}
+
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: blue !important; 
+  color: white !important; 
+}
+
+
+
+
+
